@@ -24,9 +24,9 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata = {
-  title: 'TruckDispatch Pro — The AI-Powered Dispatch Operating System',
+  title: 'TOS — AI-Based Transport Operating System | TruckDispatch Pro',
   description:
-    'TruckDispatch Pro automates your entire load lifecycle from discovery to delivery with AI that communicates, decides, and executes in real time.',
+    'TOS (Transport Operating System) is an AI-based platform for dispatch and last mile — automating load lifecycle, communication, and execution with Bella AI.',
 }
 
 export default function RootLayout({ children }) {

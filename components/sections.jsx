@@ -121,44 +121,93 @@ export function Nav() {
 export function Hero() {
   return (
     <>
-      <section className="tdp-hero2">
-        <div className="tdp-hero2-frame">
+      <section className="tdp-hero3">
+        <div className="tdp-hero3-frame">
           <img
             src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=1920&q=80&fit=crop"
             alt=""
-            className="tdp-hero2-bg"
+            className="tdp-hero3-bg"
             aria-hidden="true"
           />
-          <div className="tdp-hero2-overlay" />
+          <div className="tdp-hero3-overlay" aria-hidden="true" />
 
-          <div className="tdp-hero2-body">
-            <div className="tdp-hero2-status tdp-mono">
-              <span className="tdp-status-dot" />
-              Bella AI · Online
+          <svg className="tdp-hero3-grid" aria-hidden="true">
+            <defs>
+              <pattern id="hero3-grid" width="56" height="56" patternUnits="userSpaceOnUse">
+                <path d="M 56 0 L 0 0 0 56" fill="none" stroke="rgba(140,170,230,0.10)" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hero3-grid)" />
+          </svg>
+
+          <div className="tdp-hero3-scan" aria-hidden="true" />
+
+          <div className="tdp-hero3-nodes" aria-hidden="true">
+            <span className="tdp-hero3-node" style={{ top: '14%', left: '11%' }} />
+            <span className="tdp-hero3-node" style={{ top: '28%', right: '13%', animationDelay: '1.1s' }} />
+            <span className="tdp-hero3-node" style={{ bottom: '22%', left: '17%', animationDelay: '2.2s' }} />
+            <span className="tdp-hero3-node" style={{ top: '58%', right: '19%', animationDelay: '0.6s' }} />
+            <span className="tdp-hero3-node" style={{ bottom: '12%', right: '36%', animationDelay: '1.7s' }} />
+          </div>
+
+          <div className="tdp-hero3-body">
+            <div className="tdp-hero3-status">
+              <span className="tdp-hero3-status-dot" />
+              <span className="tdp-mono">Live · 4 AI agents online · Bella v3.2</span>
             </div>
 
-            <h1 className="tdp-hero2-h">
-              The AI-Powered<br />Dispatch Operating System
+            <div className="tdp-hero3-acronym" aria-label="TOS">
+              <span style={{ '--i': 0 }}>T</span>
+              <span style={{ '--i': 1 }}>O</span>
+              <span style={{ '--i': 2 }}>S</span>
+            </div>
+
+            <h1 className="tdp-hero3-h">
+              <span className="tdp-hero3-h-line">Transport Operating System</span>
+              <span className="tdp-hero3-h-tag tdp-mono">
+                <span className="tdp-hero3-shimmer" aria-hidden="true" />
+                <span className="tdp-hero3-h-tag-dot" />
+                AI-Based · Autonomous
+              </span>
             </h1>
 
-            <p className="tdp-hero2-sub">
-              Bella AI automates your entire operation — end to end. See it in action:
+            <p className="tdp-hero3-sub">
+              One AI-based platform for the full freight lifecycle — dispatch, last mile, and Bella AI
+              executing negotiation, communication, and monitoring from lead to delivery.
             </p>
 
-            <div className="tdp-hero2-cards">
-              <a href="#bella" className="tdp-hero2-card">
-                <h2 className="tdp-hero2-card-h">Dispatch System</h2>
-                <p className="tdp-mono tdp-hero2-card-label">AI-POWERED LOAD MANAGEMENT</p>
-                <p className="tdp-hero2-card-body">
-                  Built for freight brokerages, trucking carriers, and dispatch operations of any size
+            <div className="tdp-hero3-cta">
+              <a href="#contact" className="tdp-hero3-btn">
+                Book a demo
+                <span className="tdp-hero3-btn-arrow" aria-hidden="true">→</span>
+              </a>
+              <a href="#bella" className="tdp-hero3-link">
+                Meet Bella AI
+                <span className="tdp-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <HeroLiveTicker />
+
+            <div className="tdp-hero3-cards">
+              <a href="#bella" className="tdp-hero3-card">
+                <div className="tdp-hero3-card-row">
+                  <span className="tdp-mono tdp-hero3-card-label">TOS · DISPATCH</span>
+                  <span className="tdp-hero3-card-arrow" aria-hidden="true">→</span>
+                </div>
+                <h2 className="tdp-hero3-card-h">AI Load Management</h2>
+                <p className="tdp-hero3-card-body">
+                  Brokerages, carriers, and dispatch teams — automated on one operating system.
                 </p>
               </a>
-              <div className="tdp-hero2-card-divider" />
-              <a href="#features" className="tdp-hero2-card">
-                <h2 className="tdp-hero2-card-h">Last Mile System</h2>
-                <p className="tdp-mono tdp-hero2-card-label">AI ROUTE OPTIMIZATION</p>
-                <p className="tdp-hero2-card-body">
-                  Built for last mile delivery operations and logistics companies at any scale
+              <a href="#features" className="tdp-hero3-card">
+                <div className="tdp-hero3-card-row">
+                  <span className="tdp-mono tdp-hero3-card-label">TOS · LAST MILE</span>
+                  <span className="tdp-hero3-card-arrow" aria-hidden="true">→</span>
+                </div>
+                <h2 className="tdp-hero3-card-h">AI Route Optimization</h2>
+                <p className="tdp-hero3-card-body">
+                  Delivery and logistics operations — routes, stops, and drivers on the same TOS.
                 </p>
               </a>
             </div>
@@ -167,6 +216,35 @@ export function Hero() {
       </section>
       <LogoStrip />
     </>
+  )
+}
+
+// ─── Hero live ticker — Bella AI activity feed ─────────────────────
+function HeroLiveTicker() {
+  const events = [
+    { tag: 'NEGOTIATION', msg: 'Load #AB01 secured at $2,450 — above target rate', type: 'pos' },
+    { tag: 'COMMUNICATION', msg: 'ETA update sent to AKS Logistics automatically', type: 'info' },
+    { tag: 'ROUTING', msg: '14 last-mile routes optimized · 52 min saved', type: 'pos' },
+    { tag: 'ALERT', msg: 'Load #WJ19 rerouted via Birmingham · ETA restored', type: 'warn' },
+    { tag: 'MONITORING', msg: '94% of inbound comms handled by Bella AI', type: 'info' },
+  ]
+  const [idx, setIdx] = useState(0)
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % events.length), 3200)
+    return () => clearInterval(t)
+  }, [])
+  const e = events[idx]
+  return (
+    <div className="tdp-hero3-ticker">
+      <div className="tdp-hero3-ticker-led">
+        <span className="tdp-hero3-ticker-led-dot" />
+        <span className="tdp-mono tdp-hero3-ticker-led-label">Bella AI</span>
+      </div>
+      <div className="tdp-hero3-ticker-content" key={idx}>
+        <span className={`tdp-mono tdp-hero3-ticker-type tdp-hero3-ticker-${e.type}`}>{e.tag}</span>
+        <span className="tdp-hero3-ticker-msg">{e.msg}</span>
+      </div>
+    </div>
   )
 }
 
